@@ -502,7 +502,7 @@ export function AdminKeyManagement({
           </p>
         </div>
         <div
-          className="p-5 rounded-xl border transition-all hover:shadow-lg"
+          className="p-5 rounded-lg border transition-colors"
           style={{
             backgroundColor: colors.card,
             borderColor: colors.border,
@@ -519,7 +519,7 @@ export function AdminKeyManagement({
           </p>
         </div>
         <div
-          className="p-5 rounded-xl border transition-all hover:shadow-lg"
+          className="p-5 rounded-lg border transition-colors"
           style={{
             backgroundColor: colors.card,
             borderColor: colors.border,
@@ -539,7 +539,7 @@ export function AdminKeyManagement({
           </p>
         </div>
         <div
-          className="p-5 rounded-xl border transition-all hover:shadow-lg"
+          className="p-5 rounded-lg border transition-colors"
           style={{
             backgroundColor: colors.card,
             borderColor: colors.border,
