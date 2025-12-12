@@ -98,6 +98,12 @@ export function AdminKeyManagement({
       return;
     }
 
+    // Validate form data
+    if (formData.maxEmojis < 1 || formData.maxEmojis > 1000000) {
+      alert("Max emojis must be between 1 and 1,000,000");
+      return;
+    }
+
     setGeneratingKey(true);
     try {
       const generateRandomSegment = () => {
