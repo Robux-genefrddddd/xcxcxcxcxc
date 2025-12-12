@@ -66,16 +66,13 @@ export function AdminPanel({ theme, userRole, userId }: AdminPanelProps) {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-2">
-        <div
-          className="p-2 rounded-lg"
-          style={{ backgroundColor: colors.accentLight }}
-        >
-          <Sparkles className="w-5 h-5" style={{ color: colors.accent }} />
-        </div>
+      <div>
         <h2 className="text-2xl font-bold" style={{ color: colors.text }}>
           Admin Console
         </h2>
+        <p className="text-sm mt-2" style={{ color: colors.textSecondary }}>
+          System administration and configuration
+        </p>
       </div>
 
       {/* Navigation Tabs */}
