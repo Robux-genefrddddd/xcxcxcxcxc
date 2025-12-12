@@ -1,19 +1,39 @@
 import { db } from "./firebase";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { sanitizeInput } from "./input-validation";
 
 export type UserRole = "user" | "admin" | "founder";
 
+// Valid roles for validation
+const VALID_ROLES: Record<string, UserRole> = {
+  user: "user",
+  admin: "admin",
+  founder: "founder",
+};
+
 export async function getUserRole(userId: string): Promise<UserRole> {
   try {
-    const userDocRef = doc(db, "userRoles", userId);
+    // Sanitize user ID to prevent injection
+    const sanitizedId = sanitizeInput(userId);
+    if (!sanitizedId || sanitizedId.length === 0) {
+      return "user";
+    }
+
+    const userDocRef = doc(db, "userRoles", sanitizedId);
     const userDocSnap = await getDoc(userDocRef);
 
     if (userDocSnap.exists()) {
-      const role = userDocSnap.data().role as UserRole;
-      return role;
+      const data = userDocSnap.data();
+      const role = data?.role as UserRole;
+
+      // Validate role is in allowed list
+      if (VALID_ROLES[role]) {
+        return role;
+      }
+      return "user";
     } else {
       // Initialize new user with "user" role
-      await setDoc(userDocRef, { role: "user" });
+      await setDoc(userDocRef, { role: "user", createdAt: new Date().toISOString() });
       return "user";
     }
   } catch (error) {
@@ -27,8 +47,22 @@ export async function updateUserRole(
   newRole: UserRole,
 ): Promise<void> {
   try {
-    const userDocRef = doc(db, "userRoles", userId);
-    await updateDoc(userDocRef, { role: newRole });
+    // Validate new role
+    if (!VALID_ROLES[newRole]) {
+      throw new Error(`Invalid role: ${newRole}`);
+    }
+
+    // Sanitize user ID to prevent injection
+    const sanitizedId = sanitizeInput(userId);
+    if (!sanitizedId || sanitizedId.length === 0) {
+      throw new Error("Invalid user ID");
+    }
+
+    const userDocRef = doc(db, "userRoles", sanitizedId);
+    await updateDoc(userDocRef, {
+      role: newRole,
+      updatedAt: new Date().toISOString(),
+    });
   } catch (error) {
     console.error("Error updating user role:", error);
     throw error;
