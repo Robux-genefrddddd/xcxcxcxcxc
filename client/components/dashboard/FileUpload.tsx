@@ -13,6 +13,7 @@ export function FileUpload({
   onFileSelected,
   uploading,
   theme,
+  maxFileSize = 300,
 }: FileUploadProps) {
   const colors = getThemeColors(theme);
   const inputRef = useRef<HTMLInputElement>(null);
