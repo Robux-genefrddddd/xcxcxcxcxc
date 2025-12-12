@@ -76,13 +76,13 @@ export function DashboardSidebar({
     : 0;
 
   const getStorageLimitDisplay = () => {
-    if (!userPlan) return "1 GB";
-    if (userPlan.storageLimit === Infinity) return "Unlimited";
+    if (!userPlan) return { text: "1 GB", showLimit: true };
+    if (userPlan.storageLimit === Infinity) return { text: "Unlimited", showLimit: false };
     const limitTB = userPlan.storageLimit / (1024 * 1024 * 1024 * 1024);
-    if (limitTB >= 1) return `${limitTB.toFixed(0)} T`;
+    if (limitTB >= 1) return { text: `${limitTB.toFixed(0)} T`, showLimit: true };
     const limitGB = userPlan.storageLimit / (1024 * 1024 * 1024);
-    if (limitGB >= 1) return `${limitGB.toFixed(0)} GB`;
-    return `${(limitGB * 1024).toFixed(0)} MB`;
+    if (limitGB >= 1) return { text: `${limitGB.toFixed(0)} GB`, showLimit: true };
+    return { text: `${(limitGB * 1024).toFixed(0)} MB`, showLimit: true };
   };
 
   const handleLogout = async () => {
