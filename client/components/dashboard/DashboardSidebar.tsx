@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Files, Users, Palette, LogOut, Shield, Share2 } from "lucide-react";
+import { LogOut, Shield } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { getThemeColors } from "@/lib/theme-colors";
@@ -24,10 +24,10 @@ interface DashboardSidebarProps {
 
 const getNavItems = (userRole?: UserRole) => {
   const items = [
-    { id: "files", label: "Files", icon: Files },
-    { id: "shared", label: "Shared", icon: Share2 },
-    { id: "users", label: "Manage Users", icon: Users },
-    { id: "theme", label: "Theme", icon: Palette },
+    { id: "files", label: "Files", icon: null, imageUrl: "https://cdn-icons-png.freepik.com/256/7795/7795785.png?semt=ais_white_label" },
+    { id: "shared", label: "Shared", icon: null, imageUrl: "https://cdn-icons-png.flaticon.com/512/666/666175.png" },
+    { id: "users", label: "Manage Users", icon: null, imageUrl: "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" },
+    { id: "theme", label: "Theme", icon: null, imageUrl: "https://cdn-icons-png.flaticon.com/512/3159/3159205.png" },
   ];
 
   if (userRole && canAccessAdmin(userRole)) {
