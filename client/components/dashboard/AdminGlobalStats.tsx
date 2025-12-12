@@ -172,7 +172,7 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
     <div className="space-y-8">
       <div>
         <h3 className="text-2xl font-bold" style={{ color: colors.text }}>
-          📊 Global Statistics
+          Global Statistics
         </h3>
         <p className="text-sm mt-1" style={{ color: colors.textSecondary }}>
           System-wide metrics and analytics dashboard
@@ -219,7 +219,7 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
                   className="p-3 rounded-lg text-2xl"
                   style={{ backgroundColor: colors.accentLight }}
                 >
-                  👥
+                  ▪
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
                   className="p-3 rounded-lg text-2xl"
                   style={{ backgroundColor: "rgba(34, 197, 94, 0.15)" }}
                 >
-                  🟢
+                  ●
                 </div>
               </div>
               <div
@@ -286,7 +286,7 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
                   className="p-3 rounded-lg text-2xl"
                   style={{ backgroundColor: "rgba(168, 85, 247, 0.15)" }}
                 >
-                  💾
+                  ⬜
                 </div>
               </div>
             </div>
@@ -319,7 +319,7 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
                   className="p-3 rounded-lg text-2xl"
                   style={{ backgroundColor: "rgba(245, 158, 11, 0.15)" }}
                 >
-                  ⭐
+                  ◆
                 </div>
               </div>
               <div
@@ -350,10 +350,10 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
               }}
             >
               <h4
-                className="font-semibold text-lg mb-4 flex items-center gap-2"
+                className="font-semibold text-lg mb-4"
                 style={{ color: colors.text }}
               >
-                <span>📋</span> Plan Distribution
+                Plan Distribution
               </h4>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
@@ -394,10 +394,10 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
               }}
             >
               <h4
-                className="font-semibold text-lg mb-4 flex items-center gap-2"
+                className="font-semibold text-lg mb-4"
                 style={{ color: colors.text }}
               >
-                <span>🔐</span> Role Distribution
+                Role Distribution
               </h4>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
@@ -439,10 +439,10 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
             }}
           >
             <h4
-              className="font-semibold text-lg mb-4 flex items-center gap-2"
+              className="font-semibold text-lg mb-4"
               style={{ color: colors.text }}
             >
-              <span>📈</span> Recent Activity (Last 7 Days)
+              Recent Activity (Last 7 Days)
             </h4>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart
