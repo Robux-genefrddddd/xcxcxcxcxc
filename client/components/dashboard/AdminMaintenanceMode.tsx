@@ -130,7 +130,7 @@ export function AdminMaintenanceMode({
       {/* Header */}
       <div>
         <h3 className="text-xl font-bold" style={{ color: colors.text }}>
-          🔧 Maintenance Mode
+          Maintenance Mode
         </h3>
         <p className="text-sm mt-1" style={{ color: colors.textSecondary }}>
           Control site-wide maintenance settings and user notifications
@@ -327,7 +327,7 @@ export function AdminMaintenanceMode({
           </div>
           <div>
             <p className="font-semibold" style={{ color: colors.text }}>
-              ⚡ Maintenance Mode Active
+              Maintenance Mode Active
             </p>
             <p style={{ color: colors.textSecondary }} className="text-sm mt-2">
               Users will see the{" "}
@@ -362,7 +362,7 @@ export function AdminMaintenanceMode({
           }}
         >
           <h4 className="font-semibold mb-4" style={{ color: colors.text }}>
-            👁️ Live Preview
+            Live Preview
           </h4>
           <div
             className="p-8 rounded-lg border text-center"
