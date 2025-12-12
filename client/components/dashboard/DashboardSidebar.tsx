@@ -122,7 +122,20 @@ export function DashboardSidebar({
                   : colors.textSecondary,
               }}
             >
-              <Icon className="w-4 h-4" />
+              {item.imageUrl ? (
+                <img
+                  src={item.imageUrl}
+                  alt={item.label}
+                  className="w-4 h-4 object-contain"
+                  style={{
+                    filter: isActive
+                      ? "brightness(1)"
+                      : "brightness(0.7) opacity(0.7)",
+                  }}
+                />
+              ) : (
+                <Icon className="w-4 h-4" />
+              )}
               <span>{item.label}</span>
             </button>
           );
