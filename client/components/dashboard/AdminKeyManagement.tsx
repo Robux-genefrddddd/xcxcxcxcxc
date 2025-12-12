@@ -161,6 +161,9 @@ export function AdminKeyManagement({
   };
 
   const copyToClipboard = (key: string, id: string) => {
+    // Validate key format before copying
+    if (!key || key.length === 0) return;
+
     navigator.clipboard.writeText(key);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2000);
