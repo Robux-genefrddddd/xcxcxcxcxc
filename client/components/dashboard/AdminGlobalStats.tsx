@@ -360,14 +360,14 @@ export function AdminGlobalStats({ theme, userRole }: AdminGlobalStatsProps) {
 
             {/* Role Distribution Pie Chart */}
             <div
-              className="p-4 rounded-xl border"
+              className="p-6 rounded-xl border transition-all hover:shadow-lg"
               style={{
                 backgroundColor: colors.card,
                 borderColor: colors.border,
               }}
             >
-              <h4 className="font-semibold mb-4" style={{ color: colors.text }}>
-                Role Distribution
+              <h4 className="font-semibold text-lg mb-4 flex items-center gap-2" style={{ color: colors.text }}>
+                <span>🔐</span> Role Distribution
               </h4>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
