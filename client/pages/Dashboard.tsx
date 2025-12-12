@@ -6,7 +6,7 @@ import { SharedFilesList } from "@/components/dashboard/SharedFilesList";
 import { UserManagement } from "@/components/dashboard/UserManagement";
 import { ThemeSelector } from "@/components/dashboard/ThemeSelector";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
-import { UploadModal, MAX_FILE_SIZE } from "@/components/dashboard/UploadModal";
+import { UploadModal } from "@/components/dashboard/UploadModal";
 import { PlanUpgradeModal } from "@/components/dashboard/PlanUpgradeModal";
 import { ShareFileModal } from "@/components/dashboard/ShareFileModal";
 import { DashboardStats } from "@/components/dashboard/DashboardStats";
