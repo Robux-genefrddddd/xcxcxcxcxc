@@ -63,26 +63,12 @@ export function FilesList({
     setDownloadingId(file.id);
 
     try {
-      const response = await fetch("/api/files/download", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ storagePath: file.storagePath }),
-      });
+      const fileRef = ref(storage, file.storagePath);
+      const downloadUrl = await getDownloadURL(fileRef);
 
+      const response = await fetch(downloadUrl);
       if (!response.ok) {
-        if (response.status === 401) {
-          throw new Error("Access denied. Please try logging in again.");
-        } else if (response.status === 403) {
-          throw new Error("You don't have permission to download this file.");
-        } else if (response.status === 404) {
-          throw new Error(
-            "File not found in storage. It may have been deleted.",
-          );
-        } else {
-          throw new Error("Failed to download file. Please try again.");
-        }
+        throw new Error(`Download failed: ${response.statusText}`);
       }
 
       const blob = await response.blob();
