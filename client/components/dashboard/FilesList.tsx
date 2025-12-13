@@ -63,11 +63,23 @@ export function FilesList({
     setDownloadingId(file.id);
 
     try {
-      const fileRef = ref(storage, file.storagePath);
-      const downloadUrl = await getDownloadURL(fileRef);
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ storagePath: file.storagePath }),
+      });
 
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to download file");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.href = downloadUrl;
+      link.href = url;
       link.download = file.name || "download";
       link.style.display = "none";
 
@@ -76,6 +88,7 @@ export function FilesList({
 
       setTimeout(() => {
         document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
       }, 100);
     } catch (error) {
       console.error("Error downloading file:", error);
