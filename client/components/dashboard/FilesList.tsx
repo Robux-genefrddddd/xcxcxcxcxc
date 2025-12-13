@@ -90,10 +90,11 @@ export function FilesList({
         throw new Error(errorMessage);
       }
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      const data = await response.json();
+      const downloadUrl = data.url;
+
       const link = document.createElement("a");
-      link.href = url;
+      link.href = downloadUrl;
       link.download = file.name || "download";
       link.style.display = "none";
 
@@ -102,7 +103,6 @@ export function FilesList({
 
       setTimeout(() => {
         document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
       }, 100);
     } catch (error) {
       console.error("Error downloading file:", error);
