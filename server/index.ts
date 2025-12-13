@@ -3,7 +3,6 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 import { handleDemo } from "./routes/demo";
-import { fileDownloadRouter } from "./routes/file-download";
 
 // Rate limiting configuration for DDoS protection
 // Disable in development for easier testing
