@@ -63,8 +63,35 @@ export function FilesList({
     setDownloadingId(file.id);
 
     try {
-      const fileRef = ref(storage, file.storagePath);
-      const downloadUrl = await getDownloadURL(fileRef);
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ storagePath: file.storagePath }),
+      });
+
+      if (!response.ok) {
+        let errorMessage = "Failed to download file";
+        const contentType = response.headers.get("content-type");
+
+        try {
+          if (contentType?.includes("application/json")) {
+            const error = await response.json();
+            errorMessage = error.error || errorMessage;
+          } else {
+            const text = await response.text();
+            errorMessage = text.slice(0, 100) || errorMessage;
+          }
+        } catch {
+          errorMessage = `Server error (${response.status})`;
+        }
+
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+      const downloadUrl = data.url;
 
       const link = document.createElement("a");
       link.href = downloadUrl;
