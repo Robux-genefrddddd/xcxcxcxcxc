@@ -187,6 +187,7 @@ export function DashboardSidebar({
               src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
               alt="User Avatar"
               className="w-6 h-6 object-contain"
+              style={{ filter: "brightness(0) invert(1)" }}
             />
           </div>
           <div className="flex-1 min-w-0">
