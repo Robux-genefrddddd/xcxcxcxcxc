@@ -23,15 +23,19 @@ router.post("/download", async (req: Request, res: Response) => {
 
       if (!response.ok) {
         return res.status(response.status).json({
-          error: `Firebase Storage error: ${response.statusText}`
+          error: `Firebase Storage error: ${response.statusText}`,
         });
       }
 
-      const contentType = response.headers.get("content-type") || "application/octet-stream";
+      const contentType =
+        response.headers.get("content-type") || "application/octet-stream";
       const contentLength = response.headers.get("content-length");
 
       res.setHeader("Content-Type", contentType);
-      res.setHeader("Content-Disposition", `attachment; filename="${fileName || "download"}"`);
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename="${fileName || "download"}"`,
+      );
 
       if (contentLength) {
         res.setHeader("Content-Length", contentLength);
@@ -46,7 +50,7 @@ router.post("/download", async (req: Request, res: Response) => {
     } catch (fetchError) {
       console.error("Error fetching from Firebase Storage:", fetchError);
       return res.status(500).json({
-        error: "Failed to fetch file from storage"
+        error: "Failed to fetch file from storage",
       });
     }
   } catch (error) {

@@ -70,7 +70,7 @@ export function FilesList({
         },
         body: JSON.stringify({
           storagePath: file.storagePath,
-          fileName: file.name
+          fileName: file.name,
         }),
       });
 

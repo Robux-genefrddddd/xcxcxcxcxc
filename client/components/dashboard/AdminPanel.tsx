@@ -67,13 +67,19 @@ export function AdminPanel({ theme, userRole, userId }: AdminPanelProps) {
     <div className="space-y-4">
       {/* Header */}
       <div className="border-b" style={{ borderColor: colors.border }}>
-        <h2 className="text-lg font-semibold pb-3" style={{ color: colors.text }}>
+        <h2
+          className="text-lg font-semibold pb-3"
+          style={{ color: colors.text }}
+        >
           Admin
         </h2>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex gap-2 flex-wrap border-b" style={{ borderColor: colors.border }}>
+      <div
+        className="flex gap-2 flex-wrap border-b"
+        style={{ borderColor: colors.border }}
+      >
         {visibleTabs.map((tab) => (
           <button
             key={tab.id}
@@ -87,7 +93,9 @@ export function AdminPanel({ theme, userRole, userId }: AdminPanelProps) {
             }}
           >
             {tab.icon}
-            <span className="hidden sm:inline text-xs font-medium">{tab.label}</span>
+            <span className="hidden sm:inline text-xs font-medium">
+              {tab.label}
+            </span>
           </button>
         ))}
       </div>
