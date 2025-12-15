@@ -185,6 +185,28 @@ export function AdminUserManagement({
         </p>
       </div>
 
+      {/* Search Bar */}
+      {users.length > 0 && (
+        <div className="relative">
+          <Search
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+            style={{ color: colors.textSecondary }}
+          />
+          <input
+            type="text"
+            placeholder="Search users by email..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-9 pr-4 py-2 rounded-lg border text-sm"
+            style={{
+              backgroundColor: colors.card,
+              borderColor: colors.border,
+              color: colors.text,
+            }}
+          />
+        </div>
+      )}
+
       {/* Users Grid */}
       {loading ? (
         <div className="flex justify-center items-center py-12">
